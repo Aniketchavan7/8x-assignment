@@ -31,20 +31,17 @@ VALUES
    '[{"views": 500000, "bonus_cents": 5000}]', 'tt_teo');
 
 -- A post lands for each creator -> trigger_create_managed_creator_post fires.
-INSERT INTO posts (id, tiktok_account_id, latest_views) VALUES
-  ('cccccccc-cccc-cccc-cccc-cccccccccccc', 'tt_maria', 600000),
-  ('dddddddd-dddd-dddd-dddd-dddddddddddd', 'tt_teo', 700000);
+INSERT INTO posts (id, tiktok_account_id, brand_campaign_id, latest_views) VALUES
+  ('cccccccc-cccc-cccc-cccc-cccccccccccc', 'tt_maria', '22222222-2222-2222-2222-222222222222', 600000),
+  ('dddddddd-dddd-dddd-dddd-dddddddddddd', 'tt_teo', '22222222-2222-2222-2222-222222222222', 700000);
 
 -- A metrics sync arrives -> trigger_recalculate_post_payment fires.
 INSERT INTO post_engagement_metrics (post_id, views) VALUES
   ('cccccccc-cccc-cccc-cccc-cccccccccccc', 600000),
   ('dddddddd-dddd-dddd-dddd-dddddddddddd', 700000);
 
--- Teo gets paid out: record the ledger entry, mark the post paid, re-sync.
-UPDATE managed_creator_posts
-SET total_paid_cents = 500
-WHERE post_id = 'dddddddd-dddd-dddd-dddd-dddddddddddd';
-
+-- Teo gets paid out. The ledger trigger, not an ad-hoc MCP write, derives
+-- total_paid_cents and payment_status from this completed transaction.
 INSERT INTO creator_transactions (user_id, managed_creator_post_id, amount_cents, type)
 SELECT 'user_teo', id, 500, 'earning'
 FROM managed_creator_posts
