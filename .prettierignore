@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+dist/
+
+# Generated files
+types/supabase.ts
+pnpm-lock.yaml
+
+# Supabase
+supabase/.temp/
+
+# Misc
+*.md

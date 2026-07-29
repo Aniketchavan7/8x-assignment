@@ -1,0 +1,131 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+/test-results
+/playwright-report
+/playwright/.cache
+/.playwright-mcp
+tests/.auth
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+__pycache__/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env
+.env.*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# supabase
+.branches
+.temp
+.supabase/
+
+# scripts
+scripts/jobs-to-upload.json
+
+supabase/*
+!supabase/migrations/
+!supabase/functions/
+!supabase/manual/
+!supabase/seed.sql
+!supabase/seed-aiapply.sql
+!supabase/seed-legacy-migration-test.sql
+!supabase/seed-pre-migration.sql
+!supabase/.gitignore
+
+# Temp files
+tmp/
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+# Turbo
+.turbo/
+
+# Worktrees
+.worktrees/
+
+
+# Email preview files (local dev)
+.email-previews/
+
+# Binary test artifacts
+test_photo.jpg
+test_video.mp4
+
+# Dev convenience / backup files
+*.sql.bak
+
+# Local editor settings
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+
+# Internal dev-only docs (not for production repo)
+worklog.md
+creator-tier-pricing.md
+GUIDE_DEV_REMINDERS.md
+TODO_*.md
+TECHDEBT_*.md
+docs/plans/
+docs/TECHDEBT_*.md
+
+# Editor-specific files (local dev only)
+.cursor/
+.cursorrules
+.vscode/
+.mcp.json
+
+# Sensitive project config
+.supabase-project.json
+
+# Generated cache files
+.translation-cache.json
+
+# Claude superpowers
+skills-lock.json
+
+# Graphify generated knowledge graph
+graphify-out/
+
+# Local pentest/security artifacts (never commit)
+.pentest-*
+docs/security/
+
+# Database backups (never commit)
+*.sql.backup
+my_mobile_backup.sql
+
+# Playwright / Browser MCP scratch output at repo root (snapshots, screenshots)
+/*.png
+/*.yml
+/*_snapshot.md
+/PROMPT.md
